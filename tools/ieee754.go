@@ -37,7 +37,7 @@ func IEEE754ToHex(input string, output *string, byteOrder string) error {
 	f, err := strconv.ParseFloat(input, 32)
 	ff := float32(f)
 	if err != nil {
-		return fmt.Errorf("[HexToIEEE754] Input [0x% X] translate error: %v", input, err)
+		return fmt.Errorf("[IEEE754ToHex] Input [0x% X] translate error: %v", input, err)
 	}
 	outputBytes := make([]byte, 4)
 	switch byteOrder {
@@ -48,6 +48,6 @@ func IEEE754ToHex(input string, output *string, byteOrder string) error {
 		binary.LittleEndian.PutUint32(outputBytes, math.Float32bits(ff))
 		*output = string(outputBytes[:4])
 	}
-	log.Printf("[HexToIEEE754] input -> %s, output bytes -> 0x%X", input, outputBytes)
+	log.Printf("[IEEE754ToHex] input -> %s, output bytes -> 0x%X", input, outputBytes)
 	return nil
 }
