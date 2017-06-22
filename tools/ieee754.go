@@ -33,11 +33,11 @@ func HexToIEEE754(input string, output *string, byteOrder string) error {
 }
 
 func IEEE754ToHex(input string, output *string, byteOrder string) error {
-	log.Printf("[IEEE754ToHex] input -> 0x%s, output -> %s, byte order -> %s", input, *output, byteOrder)
+	log.Printf("[IEEE754ToHex] input -> %s, output -> %s, byte order -> %s", input, *output, byteOrder)
 	f, err := strconv.ParseFloat(input, 32)
 	ff := float32(f)
 	if err != nil {
-		return fmt.Errorf("[IEEE754ToHex] Input [0x% X] translate error: %v", input, err)
+		return fmt.Errorf("[IEEE754ToHex] Input [%s] translate error: %v", input, err)
 	}
 	outputBytes := make([]byte, 4)
 	switch byteOrder {
